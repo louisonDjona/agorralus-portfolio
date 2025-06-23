@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html{
+            height: 100%;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .portal-container{
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            background-image: url(./IMG_5259.JPG);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .overlay{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0,0,0,0.4);
+            z-index: 1;
+        }
+        .explore-btn{
+            position: relative;
+            z-index: 2;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            color: white;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .explore-btn:hover{
+            background-color: white;
+            color: black;
+            transform: scale(1.05);
+        }
+        @media(max-width: 768px){
+            .explore-btn{
+                font-size: 1rem;
+                padding: 12px 30px;
+            }
+        }
+
+        @media(max-width: 480px){
+            .explore-btn{
+                font-size: 0.9rem;
+                padding: 10px 25px;
+            }
+        }
+        .main-quote{
+            position: absolute;
+            top: 20%;
+            width: 80%;
+            text-align: center;
+            z-index: 2;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+            margin: 0 auto;
+        }
+        @media(max-width: 768px){
+            .main-quote{
+                font-size: 1.8rem;
+            }
+        }
+        @media(max-width: 480px){
+            .main-quote{
+                font-size: 1.3rem;
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="portal-container">
+        <div class="overlay"></div>
+        <button class="explore-btn" onclick="exploreSite()">AGORRA</button>
+        <h1 class="main-quote">Let's change your style!</h1>
+    </div>    
+    <script>
+        function exploreSite(){
+            window.location.href="home.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>events</title>
+    <style>
+        *{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body{
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #fff;
+            color: #111;
+            line-height: 1.6;
+        }
+
+        h1{
+            text-align: center;
+            font-size: 3rem;
+            margin: 40px 0 20px;
+            letter-spacing: 2px;
+        }
+
+        .events-container{
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            padding: 0 20px 60px;
+            margin: auto;
+        }
+
+        .event-box{
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid #ccc;
+            transition: transform 0.3s, box-shadow 0.3s ease;
+        }
+
+        .event-box:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .event-image{
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .event-content{
+            padding: 20px 0;
+        }
+
+        .event-title{
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .event-description{
+            font-size: 1rem;
+            color: #555;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        @media screen and (min-width: 768px){
+            .events-container{
+                grid-template-columns: repeat(2,1fr);
+            }
+            .event-image{
+                height: 250px;
+            }
+        }
+
+        @media screen and (min-width: 1024px){
+            .events-container{
+                grid-template-columns: repeat(3,1fr);
+            }
+            .event-image{
+                height: 230px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>NOS EVENEMENTS</h1>
+    <div class="events-container">
+        <a href="./Biennale.html" class="event-box">
+            <img src="./pics/IMG_0262.JPG" class="event-image" alt="Biennale de Lubumbashi">
+            <div class="event-content">
+                <div class="event-title">BIENNALE DE LUBUMBASHI</div>
+                <div class="event-description">Un defile de mode sur le theme de la toxicite</div>
+            </div>
+        </a>
+
+        <a href="./fashowafrilabs.html" class="event-box">
+            <img src="./pics/IMG_7023.PNG" class="event-image" alt="cultural even0t">
+            <div class="event-content">
+                <div class="event-title">FASHION SHOW AFRILABS</div>
+                <div class="event-description">Un festival culture unique</div> 
+            </div>
+        </a>
+
+        <a href="./malia.html" class="event-box">
+            <img src="./pics/IMG_2233.JPG" class="event-image" alt="movie event">
+            <div class="event-content">
+                <div class="event-title">MALIA, LA MODE UNE VIE</div>
+                <div class="event-description">Introduction sur ce film tant attendu</div>
+            </div>
+        </a>
+    </div>
+
+    <script>
+        document.querySelectorAll('.event-box').forEach(box=>{
+            box.addEventListener('click',()=>{
+                console.log('Clicked event:',box.querySelector('.event-title').innerText);
+            });
+        });
+    </script>
+</body>
+</html>

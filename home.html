@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGORRA</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body{
+      font-family: 'Times New Roman', Times, serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    :root{
+      --bg-color: #fff;
+      --text-color: #111;
+      --link-color: #333;
+      --footer-bg: #111;
+    }
+
+    body.light-mode{
+      --bg-color: #fff;
+      --text-color: #111;
+      --link-color: #333;
+      --footer-bg: #111;
+    }
+
+    body.darkmode{
+      --bg-color: #000;
+      --text-color: #fff;
+      --link-color: #aaa;
+      --footer-bg: #000;
+    }
+
+
+    a{
+      text-decoration: none;
+      color: var(--link-color)
+    }
+
+    .agorra-header{
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .agorra-header h1{
+      font-size: 3rem;
+      letter-spacing: 10px;
+    }
+
+    .agorra-header nav ul{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .agorra-header nav a{
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .agorra-header nav a:hover{
+      color: #000;
+    }
+
+    .teaser{
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      background: black;
+    }
+
+    .teaser video{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .overlay{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .overlay h2{
+      font-size: 2.5rem;
+    }
+
+    .article-une{
+      background: #f7f7f7;
+      padding: 4rem 1rem;
+    }
+
+    .article-container{
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .article-container img{
+      flex: 1 1 400px;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .article-container .text{
+      flex: 1 1 400px;
+    }
+
+    .article-container h2{
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .article-container p{
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .btn{
+      font-weight: bold;
+      border-bottom: 2px solid #111;
+      color: #000;
+    }
+
+    .agorra-content{
+      padding: 3rem 1rem;
+      background-color: #fff;
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card{
+      text-align: center;
+    }
+
+    .card img{
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .card img:hover{
+      transform: scale(1.03);
+    }
+
+    .card h3{
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+
+    @media(max-width: 768px){
+      .overlay h2{
+        font-size: 1.5rem;
+      }
+      .agorra-header nav ul{
+        gap: 1rem;
+        justify-content: center;
+      }
+      .article-container{
+        flex-direction: column;
+      }
+    }
+
+    .footer{
+      position: relative;
+      color: white;
+      text-align: center;
+      background: var(--footer-bg);
+      overflow: hidden;
+    }
+
+    .footer-overlay{
+      background: rgba(0,0,0,0.85);
+      padding: 3rem 1rem;
+      background-image: url('./IMG_5778.JPG');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .footer-container{
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-top h2{
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      font-weight: 500;
+    }
+
+    .theme-btn{
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--link-color);
+      color: var(--bg-color);
+      border: none;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .newletter{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .newletter input{
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 30px;
+      width: 250px;
+      max-width: 100%;
+    }
+
+    .newletter button{
+      padding: 0.6rem 1.5rem;
+      border: none;
+      border-radius: 30px;
+      background: white;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .footer-bottom p{
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    } 
+
+    .footer-links{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a{
+      color: #ccc;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover{
+      color: #fff;
+    }
+
+    .lang-switch{
+      padding: 0.3rem;
+      border-radius: 5px;
+      border: none;
+      font-size: 0.9rem;
+    }
+
+    .social-icons{
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icons img{
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons img:hover{
+      transform: scale(1.1);
+    }
+
+    @media(max-width: 600px){
+      .newletter{
+        flex-direction: column;
+        align-items: center;
+      }
+      .footer-links{
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+    }
+
+    .footer-marquee{
+      overflow: hidden;
+      white-space: nowrap;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin: 2rem;
+      padding-top: 1rem;
+    }
+
+    .footer-marquee p{
+      display: inline-block;
+      animation: scroll-left 20s linear infinite;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    @keyframes scroll-left{
+      0%{
+        transform: translateX(100%);
+      }
+      100%{
+        transform: translateX(-100%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="agorra-header">
+    <h1>AGORRA</h1>
+    <nav>
+      <ul>
+        <li><a href="./index.html">HOME</a></li>
+        <li><a href="./about.html">ABOUT</a></li>
+        <li><a href="">BOOK</a></li>
+        <li><a href="./events.html">EVENEMENT</a></li>
+        <li><a href="./contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" class="theme-btn">⚫Mode</button>
+  </header>
+
+  <section class="teaser">
+    <video id="teaserVideo" autoplay muted loop playsinline preload="auto">
+      <source src="teaser.mp4" type="video/mp4"/>
+    </video>
+    <div class="overlay">
+      <h2>Entrez dans le monde du style</h2>
+    </div>
+  </section>
+
+  <section class="article-une">
+    <div class="article-container">
+      <img src="./pics/IMG_1891.JPG" alt="article a la une">
+      <div class="text">
+        <h2>Article a la une</h2>
+        <p>L'evenement de la fashion week de lubumbashi en 2024</p>
+        <a href="./fashionweek.html" class="btn">Lire l'article</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="agorra-content">
+    <div class="grid">
+      <div class="card">
+        <img src="./IMG_0913.JPG"/>
+        <h3>Tendance MOde</h3>
+      </div>
+      <div class="card">
+        <img src="./IMG_6376.JPG"/>
+        <h3>Beaute du moment</h3>
+      </div>
+      <div class="card">
+        <img src="./IMG_0841.JPG"/>
+        <h3>Portrait de Star</h3>
+      </div>
+      <div class="card">
+        <img src="./IMG_0009.JPG"/>
+        <h3>Un art de vivre</h3>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-overlay">
+      <div class="footer-container">
+        <div class="footer-top">
+          <h2>Restez-connecte</h2>
+          <form class="newsletter">
+            <input type="email" placeholder="" required>
+            <button type="submit">S'abonner</button>
+            </form>
+          </form>
+        </div>
+        <div class="footer-bottom">
+          <p id="copyright">&copy;<span id="year"></span>Agorra 2025 - Tous droits reserves.</p>
+          <ul class="footer-links">
+            <li><a href="">Mentions legales</a></li>
+            <li><a href="">Confidentialite</a></li>
+            <li><a href="">contact</a></li>
+            <li><select class="lang-swicth">
+              <option value="fr">Francais</option>
+              <option value="en">English</option>
+            </select></li>
+          </ul>
+          <div class="social-icons">
+            <a href=""><img src="" alt="Facebook"/></a>
+            <a href=""><img src="" alt="Instagram"/></a>
+            <a href=""><img src="" alt="Twitter"/></a>
+          </div>
+        </div>
+        <div class="footer-marquee">
+          <p>AGORRA . MODE . BEAUTE . CULTURE . DEFILES . LIFESTYLE . AGORRA STYLE VIBES</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const text = document.querySelector(".overlay h2");
+      text.style.oppacity = 0;
+      text.style.transition = "opacity 2s ease-in-out";
+
+      setTimeout(() => {
+        text.style.oppacity = 1;
+      }, 500);
+
+      const video = document.getElementById("teaserVideo");
+      video.onerror = () => {
+        console.error("video not loading.");
+        alert("La video ne peut pas etre lue");
+      };
+    });
+
+    document.querySelector('lang-switch').addEventListener('change', (e) => {
+      const lang = e.target.value;
+      if (lang === 'en'){
+        document.querySelector('.footer-top h2').textContent = 'stay Connected';
+        document.querySelector('.newsletter input').placeholder = 'Your email';
+        document.querySelector('.newletter button').textContent = 'Subscribe';
+        document.querySelector('.footer-links').innerHTML = `
+        <li><a href="#">Legal Notice</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Contact</a></li>`;
+      }
+      else{
+        document.querySelector('.foooter-top h2').textContext = 'Restez connecte';
+        document.querySelector('.newsletter input').placeholder = 'votre email';
+        document.querySelector('.newletter button').textContent = "S'abonner";
+        document.querySelector('.footer-links').innerHTML = `
+        <li><a href="#">Mentions legales</a></li>
+        <li><a href="#">Confidentialite</a></li>
+        <li><a href="#">Contact</a></li>`;
+      }
+    });
+
+    document.getElementById("year").textContent = new Date("year").textContent = new Date().getFullYear();
+
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme){
+      document.body.classList.add(savedTheme);
+    }
+
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      document.body.classList.toggle("light-mode");
+      const theme = document.body.classList.contains("dark-mode")?"dark-mode" : light-mode;
+      localStorage.setItem("theme", theme);
+    });
+
+    const langSwicth = document.querySelector(".lang-swicth");
+    const savedLang = localStorage.getItem("lang");
+    if (savedLang){
+      langSwicth.value = savedLang;
+      langSwicth.dispatchEvent(newEvent("change"));
+    }
+    langSwicth.addEventListener("change", (e) => {
+      const lang = e.target.value;
+      localStorage.setItem("lang", lang);
+    });
+  </script>
+</body>
+</html>
